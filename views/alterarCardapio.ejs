@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head.ejs', {title:"Alteração de Pizza"})%>
+<body>
+<%- include('includes/header.ejs')%>
+    <main class="container d-flex justify-content-center align-items-center vh-75 flex-column">
+        <!--
+            Campo para o nome da pizza
+            Campo para o preço da pizza
+            Button do tipo Submit
+            A width será fixa em 400px
+            Form no centro da tela
+        -->
+        <form action="/cardapio/alterar?_method=PUT" method="POST" class="form-cadastro card p-3">
+            <h2>Alteraçãode Pizza</h2>
+            <input type="number" value="<%= posicao %> " name="posicao" hidden readonly/>
+            <div class="form-group">
+                <label for="nomePizza">Nome da Pizza</label>
+                <input type="text" class="form-control" id="nomePizza" name="nomePizza" value="<%= pizza.nome %>">
+            </div>
+            <div class="form-group">
+                <label for="precoPizza">Preço da Pizza</label>
+                <input type="number" class="form-control" name="precoPizza" id="precoPizza" value="<%= pizza.preco %>">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Finalizar Alteração</button>
+            </div>
+        </form>
+        <% if(typeof(msg) != 'undefined'){ %>
+        <div class="d-flex justify-content-end">
+            <div class="alert alert-success">
+                <%= msg %> 
+            </div>
+        </div>
+     <% } %> 
+    </main>
+</body>
+</html>
